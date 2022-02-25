@@ -17,7 +17,7 @@
          </font></Label>
       <ImageView fitHeight="99.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Imágenes/Saved%20Pictures/Logo_de_la_Universidad_ICESI.svg.png" />
+            <Image url="@Logo_de_la_Universidad_ICESI.svg.png" />
          </image></ImageView>
       <TextField fx:id="idTF" layoutX="226.0" layoutY="188.0" promptText="Cédula" />
    </children>
