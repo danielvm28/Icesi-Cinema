@@ -22,6 +22,7 @@ public class Main extends Application{
 		Stage stage = new Stage();
 		stage.setScene(scene);
 		stage.show();//prueba
+		//cambio
 	}
 
 }
