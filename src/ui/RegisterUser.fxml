@@ -6,28 +6,28 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="238.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="416.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="textLabelName" layoutX="205.0" layoutY="47.0" />
-      <Label layoutX="61.0" layoutY="50.0" text="Name">
+      <TextField fx:id="textLabelName" layoutX="207.0" layoutY="81.0" />
+      <Label layoutX="63.0" layoutY="83.0" text="Name">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="73.0" layoutY="84.0" text="ID">
+      <Label layoutX="74.0" layoutY="131.0" text="ID">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="textLabelID" layoutX="204.0" layoutY="81.0" prefHeight="26.0" prefWidth="150.0" />
-      <ComboBox fx:id="comboBoxSelectMovie" layoutX="58.0" layoutY="118.0" prefHeight="26.0" prefWidth="298.0" promptText="Movie" />
-      <Button fx:id="buttonRegister" layoutX="174.0" layoutY="188.0" mnemonicParsing="false" style="-fx-background-color: #506ffa;" text="Register" textFill="WHITE" />
-      <Label fx:id="textFieldChair" contentDisplay="CENTER" layoutX="148.0" layoutY="155.0" prefHeight="20.0" prefWidth="209.0">
+      <TextField fx:id="textLabelID" layoutX="206.0" layoutY="128.0" prefHeight="26.0" prefWidth="150.0" />
+      <ComboBox fx:id="comboBoxSelectMovie" layoutX="59.0" layoutY="176.0" prefHeight="26.0" prefWidth="298.0" promptText="Movie" />
+      <Button fx:id="buttonSelectChair" layoutX="174.0" layoutY="225.0" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #506ffa;" text="Select Chair" textFill="WHITE" />
+      <Text layoutX="150.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register User">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
-      </Label>
-      <Button fx:id="buttonSelectChair" layoutX="58.0" layoutY="152.0" mnemonicParsing="false" text="Select Chair" />
+      </Text>
    </children>
 </AnchorPane>

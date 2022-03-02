@@ -8,17 +8,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="loginBTN" layoutX="258.0" layoutY="268.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #4495ff;" text="Iniciar Sesión" textFill="WHITE" />
-      <Label layoutX="238.0" layoutY="103.0" text="Sistema de Cine">
+      <Button fx:id="loginBTN" layoutX="213.0" layoutY="264.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #4495ff;" text="Log In" textFill="WHITE" />
+      <Label layoutX="179.0" layoutY="101.0" text="Cinema System">
          <font>
             <Font name="Arial Black" size="14.0" />
          </font></Label>
-      <ImageView fitHeight="99.0" fitWidth="200.0" layoutX="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="99.0" fitWidth="200.0" layoutX="138.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo_de_la_Universidad_ICESI.svg.png" />
          </image></ImageView>
-      <TextField fx:id="idTF" layoutX="226.0" layoutY="188.0" promptText="Cédula" />
+      <TextField fx:id="idTF" layoutX="164.0" layoutY="170.0" promptText="ID" />
    </children>
 </AnchorPane>

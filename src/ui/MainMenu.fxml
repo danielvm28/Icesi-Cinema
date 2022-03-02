@@ -7,20 +7,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="306.0" prefWidth="434.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="addMovieBTN" layoutX="148.0" layoutY="128.0" mnemonicParsing="false" onAction="#addMovie" text="Add movie" />
-      <Button fx:id="registerUserBTN" layoutX="142.0" layoutY="165.0" mnemonicParsing="false" onAction="#registerUser" text="Register user" />
-      <Button fx:id="reportBTN" layoutX="158.0" layoutY="205.0" mnemonicParsing="false" onAction="#generateReport" text="Report" />
-      <Label layoutX="102.0" layoutY="79.0" text="ICESI Cinema Menu">
+      <Button fx:id="registerFilmBTN" layoutX="175.0" layoutY="147.0" mnemonicParsing="false" onAction="#registerFilm" text="Register Film" />
+      <Button fx:id="registerUserBTN" layoutX="175.0" layoutY="186.0" mnemonicParsing="false" onAction="#registerUser" text="Register user" />
+      <Button fx:id="reportBTN" layoutX="191.0" layoutY="230.0" mnemonicParsing="false" onAction="#generateReport" text="Report" />
+      <Label layoutX="135.0" layoutY="91.0" text="ICESI Cinema Menu">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="66.0" fitWidth="150.0" layoutX="109.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="66.0" fitWidth="150.0" layoutX="142.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Logo_de_la_Universidad_ICESI.svg.png" />
          </image>
       </ImageView>
+      <Button fx:id="logOutBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#logOut" style="-fx-background-color: #d00000;" text="Log Out" textFill="WHITE" />
    </children>
 </AnchorPane>
