@@ -46,6 +46,12 @@ public class RegisterFilmController implements Initializable{
     @FXML
     private Button backBTN;
     
+    @FXML
+    private TextField startMinutesTF;
+
+    @FXML
+    private TextField startHourTF;
+    
     private int tfCounter;
 
     @FXML
@@ -77,6 +83,9 @@ public class RegisterFilmController implements Initializable{
     	if(hoursTF.getText().trim().isEmpty() || minutesTF.getText().trim().isEmpty()) {
     		errorMessage += "- Please state the duration of the film.\n";
     	}
+    	if(startHourTF.getText().trim().isEmpty() || startMinutesTF.getText().trim().isEmpty()) {
+    		errorMessage += "- Please state the start time (Hours and/or minutes) of the film.\n";
+    	}
     	if(datePicker.getValue() == null) {
     		errorMessage += "- Please provide the date of the film.\n";
     	}
@@ -95,10 +104,13 @@ public class RegisterFilmController implements Initializable{
     		// Tries to register a new film. In case the duration fields are wrong, show an alert.
     		try {
 				int hours = Integer.parseInt(hoursTF.getText().trim());
+				int startHours = Integer.parseInt(startHourTF.getText().trim());
+				int startMinutes = Integer.parseInt(startMinutesTF.getText().trim());
 				int totalMinutes = Integer.parseInt(minutesTF.getText().trim());
 				totalMinutes += hours * 60; 
 				
-				IcesiCinema.registerFilm(titleTF.getText().trim(), datePicker.getValue(), totalMinutes, theatreTypeCB.getValue());
+				IcesiCinema.registerFilm(titleTF.getText().trim(), datePicker.getValue(), totalMinutes, theatreTypeCB.getValue(), startHours, startMinutes);
+				
 			} catch (NumberFormatException e) {
 				alert.setTitle("Warning");
 				alert.setHeaderText("Wrong format");

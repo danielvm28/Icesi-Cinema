@@ -1,8 +1,8 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -12,7 +12,10 @@ public class IcesiCinema {
 	public static ArrayList<String> loginUserData = new ArrayList<>();
 	
 	// Methods
-	public static boolean registerFilm (String name, LocalDate date, int duration, TheatreType theatreType) {
+	public static boolean registerFilm (String name, LocalDate date, int duration, TheatreType theatreType, int startHours, int startMinutes) {
+		System.out.println(date);
+		LocalDateTime dateTime = date.atTime(startHours, startMinutes);
+		System.out.println(dateTime);
 		return true;
 	}
 	

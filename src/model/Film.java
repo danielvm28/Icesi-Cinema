@@ -1,17 +1,17 @@
 package model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Film {
 	//attribute
 	private String name;
-	private LocalDate date;
+	private LocalDateTime date;
 	private int durationMinutes;
 	//relations
 	private Theatre theatre;
 	
 	//methods
-	public Film(String name, LocalDate date, int durationMinute, Theatre theatre) {
+	public Film(String name, LocalDateTime date, int durationMinute, Theatre theatre) {
 		this.name = name;
 		this.date = date;
 		this.durationMinutes = durationMinute;
@@ -26,11 +26,11 @@ public class Film {
 		this.name = name;
 	}
 
-	public LocalDate getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDate date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 
