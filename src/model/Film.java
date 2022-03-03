@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDate;
 
 public class Film {
-	//atribute
+	//attribute
 	private String name;
 	private LocalDate date;
 	private int durationMinutes;
@@ -40,5 +40,9 @@ public class Film {
 
 	public void setDurationMinute(int durationMinute) {
 		this.durationMinutes = durationMinute;
+	}
+	
+	public Theatre getTheatre() {
+		return theatre;
 	}
 }

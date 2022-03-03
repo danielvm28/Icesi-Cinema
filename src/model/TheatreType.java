@@ -1,5 +1,5 @@
 package model;
 
 public enum TheatreType {
-	BIG, NORMAL;
+	MINI, NORMAL;
 }

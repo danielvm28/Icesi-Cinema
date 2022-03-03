@@ -22,12 +22,13 @@
          </font>
       </Label>
       <TextField fx:id="textLabelID" layoutX="206.0" layoutY="128.0" prefHeight="26.0" prefWidth="150.0" />
-      <ComboBox fx:id="comboBoxSelectMovie" layoutX="59.0" layoutY="176.0" prefHeight="26.0" prefWidth="298.0" promptText="Movie" />
+      <ComboBox fx:id="comboBoxSelectFilm" layoutX="59.0" layoutY="176.0" prefHeight="26.0" prefWidth="298.0" promptText="Film" />
       <Button fx:id="buttonSelectChair" layoutX="174.0" layoutY="225.0" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #506ffa;" text="Select Chair" textFill="WHITE" />
       <Text layoutX="150.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register User">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Text>
+      <Button fx:id="backBTN" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
    </children>
 </AnchorPane>

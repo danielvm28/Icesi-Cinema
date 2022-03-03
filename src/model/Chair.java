@@ -1,7 +1,7 @@
 package model;
 
 public class Chair {
-	//atributes
+	//attributes
 	private boolean reserved;
 	private String chairCode;
 	

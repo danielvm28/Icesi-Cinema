@@ -7,42 +7,28 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class IcesiCinema {
-	ObservableList<Film> filmData = FXCollections.observableArrayList();
-	ArrayList<String> loginUserData = new ArrayList<>();
+	// Attributes
+	public static ObservableList<Film> filmData = FXCollections.observableArrayList();
+	public static ArrayList<String> loginUserData = new ArrayList<>();
 	
-	public boolean registerFilm (String theatreCode, String name, LocalDate date, String duration) {
+	// Methods
+	public static boolean registerFilm (String name, LocalDate date, int duration, TheatreType theatreType) {
 		return true;
 	}
 	
-	public boolean registerUserToFilm(String theatreCode, String filmName, LocalDate filmDate, int filmDurationMinutes, String chairCode, String userName, String userID) {
+	public static boolean registerUserToFilm(TheatreType theatreType, String filmName, LocalDate filmDate, int filmDurationMinutes, String chairCode, String userName, String userID) {
 		return true;
 	}
 	
-	public ObservableList<Film> getFilmData(){
-		return filmData;
-	}
-	
-	public void setFilmData(ObservableList<Film> filmData) {
-		this.filmData=filmData;
-	}
-	
-	public ArrayList<String> getLoginUserData(){
-		return loginUserData;
-	}
-	
-	public void setLoginUserData(ArrayList<String> loginUserData) {
-		this.loginUserData=loginUserData;
-	}
-	
-	public void saveJSON() {
+	public static void saveFilmsJSON() {
 		
 	}
 	
-	public void loadJSON() {
+	public static void loadFilmsJSON() {
 		
 	}
 	
-	public boolean deleteFilm(Film film) {
-		return true;
+	public static void loadLoginUsersJSON() {
+		
 	}
 }
