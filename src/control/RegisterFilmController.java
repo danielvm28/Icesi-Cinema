@@ -2,10 +2,11 @@ package control;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.DateTimeException;
 import java.util.ResourceBundle;
 
+import exception.FilmOverlappingException;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,7 +18,6 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import main.Main;
 import model.TheatreType;
@@ -52,7 +52,12 @@ public class RegisterFilmController implements Initializable{
     @FXML
     private TextField startHourTF;
     
-    private int tfCounter;
+    @Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// Initializes the combo-box
+		
+		theatreTypeCB.getItems().setAll(TheatreType.values());
+	}
 
     @FXML
     void goBack(ActionEvent event) throws IOException {
@@ -111,37 +116,30 @@ public class RegisterFilmController implements Initializable{
 				
 				IcesiCinema.registerFilm(titleTF.getText().trim(), datePicker.getValue(), totalMinutes, theatreTypeCB.getValue(), startHours, startMinutes);
 				
+				Stage s = (Stage) backBTN.getScene().getWindow();
+		    	s.close();
+				
 			} catch (NumberFormatException e) {
 				alert.setTitle("Warning");
 				alert.setHeaderText("Wrong format");
 				alert.setContentText("Please provide the correct format for the duration");
 				
 				alert.show();
+			} catch (DateTimeException e) {
+				alert.setTitle("Warning");
+				alert.setHeaderText("Wrong time format");
+				alert.setContentText("Please provide the duration of the film and/or the start of the film fields correctly.\nThe start of the film should be "
+						+ "in a 24 hour format.");
+				
+				alert.show();
+			} catch (FilmOverlappingException e) {
+				alert.setTitle("Warning");
+				alert.setHeaderText("Wrong time format");
+				alert.setContentText(e.getMessage());
+				
+				alert.show();
 			}
-    		
-    		// TODO check conflicts and throw exception
     	}
     }
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// Initializes the combo-box and sets the change of text field on the duration fields
-		
-		tfCounter = 0;
-		
-		theatreTypeCB.getItems().setAll(TheatreType.values());
-		
-		hoursTF.setOnKeyPressed(new EventHandler<KeyEvent>() {
-
-			@Override
-			public void handle(KeyEvent event) {
-				if(tfCounter != 0) {
-					minutesTF.requestFocus();
-				} else {
-					tfCounter++;
-				}
-			}
-    	});
-	}
 
 }

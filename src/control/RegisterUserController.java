@@ -37,6 +37,20 @@ public class RegisterUserController implements Initializable{
 
     @FXML
     private Button backBTN;
+    
+    @Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// Initializes the combo-box with the film names
+		
+		ArrayList<String> filmNames = new ArrayList<>();
+		
+		for (Film f : IcesiCinema.filmData) {
+			filmNames.add(f.getName());
+		}
+		
+		comboBoxSelectFilm.getItems().setAll(filmNames);
+		
+	}
 
     @FXML
     void goBack(ActionEvent event) throws IOException {
@@ -56,7 +70,7 @@ public class RegisterUserController implements Initializable{
 
     @FXML
     void selectChair(ActionEvent event) throws IOException {
-    	// Declares an alert in case it encounters incomplete fields+
+    	// Declares an alert in case it encounters incomplete fields
     	Alert alert = new Alert(AlertType.WARNING);
     	String errorMessage = "";
     	
@@ -84,7 +98,7 @@ public class RegisterUserController implements Initializable{
 				if(f.getName().equals(selectedTitle)) {
 					Theatre foundTheatre = f.getTheatre();
 					
-					// In the constructors of the controllers, pass the obtained information of the user.
+					// TODO In the constructors of the controllers, pass the obtained information of the user.
 					// This will allow to register the user from there
 					
 					if(foundTheatre.getTheatreType() == TheatreType.MINI) {
@@ -113,20 +127,6 @@ public class RegisterUserController implements Initializable{
     	}
     	
     }
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// Initializes the combo-box with the film names
-		
-		ArrayList<String> filmNames = new ArrayList<>();
-		
-		for (Film f : IcesiCinema.filmData) {
-			filmNames.add(f.getName());
-		}
-		
-		comboBoxSelectFilm.getItems().setAll(filmNames);
-		
-	}
 
 }
 

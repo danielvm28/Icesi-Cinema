@@ -21,7 +21,7 @@ public class LoginController {
 
 	    @FXML
 	    void login(ActionEvent event) throws IOException {
-	    	// Falta Conjugar con lista serializable
+	    	// TODO Falta Conjugar con lista serializable
 	    	
 	    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/MainMenu.fxml"));
 	    	loader.setController(new MainMenuController());
