@@ -3,6 +3,7 @@ package control;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 public class MiniTheatreController {
 
@@ -89,6 +90,15 @@ public class MiniTheatreController {
 
     @FXML
     private Button chair17BT;
+
+    @FXML
+    private Text spectatorNameTXT;
+
+    @FXML
+    private Text startTimeFilmTXT;
+
+    @FXML
+    private Text filmNameTXT;
 
     @FXML
     void selectChair(ActionEvent event) {
