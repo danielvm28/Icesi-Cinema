@@ -1,13 +1,18 @@
 package control;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import model.Film;
 
-public class NormalTheatreController {
+public class NormalTheatreController implements Initializable{
 
-    @FXML
+	@FXML
     private Button chair46BT;
 
     @FXML
@@ -92,46 +97,46 @@ public class NormalTheatreController {
     private Button chair17BT;
 
     @FXML
-    private Button chair41BT1;
+    private Button chair51BT;
 
     @FXML
-    private Button chair41BT2;
+    private Button chair52BT;
 
     @FXML
-    private Button chair41BT3;
+    private Button chair53BT;
 
     @FXML
-    private Button chair41BT4;
+    private Button chair54BT;
 
     @FXML
-    private Button chair41BT5;
+    private Button chair55BT;
 
     @FXML
-    private Button chair41BT6;
+    private Button chair56BT;
 
     @FXML
-    private Button chair41BT7;
+    private Button chair57BT;
 
     @FXML
-    private Button chair41BT8;
+    private Button chair61BT;
 
     @FXML
-    private Button chair41BT9;
+    private Button chair62BT;
 
     @FXML
-    private Button chair41BT10;
+    private Button chair63BT;
 
     @FXML
-    private Button chair41BT11;
+    private Button chair64BT;
 
     @FXML
-    private Button chair41BT12;
+    private Button chair65BT;
 
     @FXML
-    private Button chair41BT13;
+    private Button chair66BT;
 
     @FXML
-    private Button chair41BT14;
+    private Button chair67BT;
 
     @FXML
     private Text spectatorNameTXT;
@@ -141,11 +146,52 @@ public class NormalTheatreController {
 
     @FXML
     private Text filmNameTXT;
+    
+    @FXML
+    private Text spectatorIDTXT;
+    
+    @FXML
+    private Button cancelBTN;
+
+    @FXML
+    private Button addBTN;
+
+    
+    private String spectatorName;
+    
+    private String spectatorId;
+    
+    private Film film;
+    
+    public NormalTheatreController(String spectatorName, String spectatorId, Film film) {
+    	this.spectatorName = spectatorName;
+    	this.spectatorId = spectatorId;
+    	this.film = film;
+    }
+
+    // TODO Implementar metodos, añadir usuarios pendiente
+    @FXML
+    void addSpectator(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cancel(ActionEvent event) {
+
+    }
 
     @FXML
     void selectChair(ActionEvent event) {
 
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		spectatorNameTXT.setText(spectatorName);
+		spectatorIDTXT.setText(spectatorId);
+		filmNameTXT.setText(film.getName());
+		startTimeFilmTXT.setText(film.getFormattedDate());
+	}
 
 }
 

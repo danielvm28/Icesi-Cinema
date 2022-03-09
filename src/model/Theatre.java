@@ -28,7 +28,11 @@ public class Theatre {
 	
 	@Override
 	public String toString() {
-		return theatreType + " ROOM";
+		if(theatreType == TheatreType.MINI) {
+			return "Mini Theatre";
+		} else {
+			return "Normal Theatre";
+		}
 	}
 
 }

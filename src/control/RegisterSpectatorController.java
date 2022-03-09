@@ -22,7 +22,7 @@ import model.IcesiCinema;
 import model.Theatre;
 import model.TheatreType;
 
-public class RegisterUserController implements Initializable{
+public class RegisterSpectatorController implements Initializable{
 	@FXML
     private TextField textLabelName;
 
@@ -75,10 +75,10 @@ public class RegisterUserController implements Initializable{
     	String errorMessage = "";
     	
     	if(textLabelName.getText().trim().isEmpty()) {
-    		errorMessage += "- Please provide the name of the user.\n";
+    		errorMessage += "- Please provide the name of the spectator.\n";
     	}
     	if(textLabelID.getText().trim().isEmpty()) {
-    		errorMessage += "- Please provide the ID of the user.\n";
+    		errorMessage += "- Please provide the ID of the spectator.\n";
     	}
     	if(comboBoxSelectFilm.getValue() == null) {
     		errorMessage += "- Please specify the film to watch.\n";
@@ -92,18 +92,19 @@ public class RegisterUserController implements Initializable{
     		alert.show();
     	} else {
     		// If the fields are fine, find the selected film and launch the corresponding window
+    		// TODO Puede haber error al introducir peliculas con el mismo nombre, revisar
     		String selectedTitle = comboBoxSelectFilm.getValue();
     		
-    		for (Film f : IcesiCinema.filmData) {
-				if(f.getName().equals(selectedTitle)) {
-					Theatre foundTheatre = f.getTheatre();
+    		for (Film film : IcesiCinema.filmData) {
+				if(film.getName().equals(selectedTitle)) {
+					Theatre foundTheatre = film.getTheatre();
 					
-					// TODO In the constructors of the controllers, pass the obtained information of the user.
-					// This will allow to register the user from there
+					// TODO In the constructors of the controllers, pass the obtained information of the spectator.
+					// This will allow to register the spectator from there
 					
 					if(foundTheatre.getTheatreType() == TheatreType.MINI) {
 						FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/MiniTheatre.fxml"));
-				    	loader.setController(new MiniTheatreController());
+				    	loader.setController(new MiniTheatreController(textLabelName.getText().trim(), textLabelID.getText().trim(), film));
 				    	Parent parent = (Parent) loader.load();
 				    	Stage stage = new Stage();
 				    	Scene scene = new Scene(parent);
@@ -111,7 +112,7 @@ public class RegisterUserController implements Initializable{
 				    	stage.show();
 					} else {
 						FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/NormalTheatre.fxml"));
-				    	loader.setController(new NormalTheatreController());
+				    	loader.setController(new NormalTheatreController(textLabelName.getText().trim(), textLabelID.getText().trim(), film));
 				    	Parent parent = (Parent) loader.load();
 				    	Stage stage = new Stage();
 				    	Scene scene = new Scene(parent);
@@ -125,9 +126,7 @@ public class RegisterUserController implements Initializable{
 				}
 			}
     	}
-    	
     }
-
 }
 
 

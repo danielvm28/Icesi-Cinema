@@ -1,6 +1,6 @@
 package model;
 
-public class User {
+public class Spectator {
 	//attribute
 	private String name;
 	private String id;
@@ -9,7 +9,7 @@ public class User {
 	private Chair chair;
 	
 	//methods
-	public User(String name, String id, Chair chair) {
+	public Spectator(String name, String id, Chair chair) {
 		this.name = name;
 		this.id = id;
 		this.setChair(chair);

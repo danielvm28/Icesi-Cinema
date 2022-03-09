@@ -95,7 +95,7 @@ public class RegisterFilmController implements Initializable{
     		errorMessage += "- Please provide the date of the film.\n";
     	}
     	if(theatreTypeCB.getValue() == null) {
-    		errorMessage += "- Please specify the type of theatre";
+    		errorMessage += "- Please specify the type of theatre.";
     	}
     	
     	// Shows the alert if there are incomplete fields

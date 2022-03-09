@@ -1,17 +1,20 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Film {
-	public static final int MAX_USERS = 42;
+	public static final int MAX_SPECTATORS = 42;
 	
 	//attribute
 	private String name;
 	private LocalDateTime date;
 	private int durationMinutes;
+	private String formattedDate;
+	
 	//relations
 	private Theatre theatre;
-	private User[] users;
+	private Spectator[] spectators;
 	
 	//methods
 	public Film(String name, LocalDateTime date, int durationMinute, Theatre theatre) {
@@ -19,7 +22,11 @@ public class Film {
 		this.date = date;
 		this.durationMinutes = durationMinute;
 		this.theatre = theatre;
-		users = new User[MAX_USERS];
+		spectators = new Spectator[MAX_SPECTATORS];
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		
+		formattedDate = date.format(formatter);
 	}
 
 	public String getName() {
@@ -50,15 +57,23 @@ public class Film {
 		return theatre;
 	}
 
-	public User[] getUsers() {
-		return users;
+	public Spectator[] getSpectators() {
+		return spectators;
 	}
 
-	public void setUsers(User[] users) {
-		this.users = users;
+	public void setSpectators(Spectator[] spectators) {
+		this.spectators = spectators;
 	}
 	
-	public void registerUser(User user, Chair chair) {
+	public void registerSpectator(Spectator spectator, Chair chair) {
 		
+	}
+
+	public String getFormattedDate() {
+		return formattedDate;
+	}
+
+	public void setFormattedDate(String formattedDate) {
+		this.formattedDate = formattedDate;
 	}
 }

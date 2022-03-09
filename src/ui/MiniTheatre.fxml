@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #dbdbdd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="38.0" layoutY="245.0" prefHeight="120.0" prefWidth="525.0">
+      <GridPane alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="38.0" layoutY="221.0" prefHeight="120.0" prefWidth="525.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -70,17 +70,67 @@
             <Font name="System Italic" size="14.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#57769c59" height="167.0" layoutX="-27.0" layoutY="-56.0" stroke="#dbdbdd" strokeType="INSIDE" width="652.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#57769c59" height="167.0" layoutX="-27.0" layoutY="-56.0" stroke="#dbdbdd" strokeType="INSIDE" width="629.0" />
       <Label layoutX="45.0" layoutY="22.0" text="Mini Theatre">
          <font>
-            <Font name="System Italic" size="24.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <Text fx:id="spectatorNameTXT" layoutX="432.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carlos Lopez" wrappingWidth="130.99999594688416" />
-      <Text fx:id="startTimeFilmTXT" layoutX="432.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="13:25" wrappingWidth="130.99999594688416" />
-      <Text fx:id="filmNameTXT" layoutX="432.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu mamá en tanga" wrappingWidth="130.99999594688416" />
-      <Label layoutX="343.0" layoutY="19.0" text="Spectator: " />
-      <Label layoutX="343.0" layoutY="49.0" text="Fim name: " />
-      <Label layoutX="343.0" layoutY="75.0" text="Start Hour: " />
+      <GridPane layoutX="320.0" layoutY="2.0" prefHeight="104.0" prefWidth="266.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="86.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="149.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="spectatorNameTXT" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="147.99999594688416" GridPane.columnIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="filmNameTXT" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.99999594688416" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="startTimeFilmTXT" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.99999594688416" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Label text="Film name: " GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Spectator: ">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Date / Start Time: " GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Spectator ID: " GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Text fx:id="spectatorIDTXT" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="146.99999594688416" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
+      <Button fx:id="cancelBTN" layoutX="480.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancel" style="-fx-background-color: #d00000;" text="Cancel" textFill="WHITE" />
+      <Button fx:id="addBTN" layoutX="544.0" layoutY="361.0" mnemonicParsing="false" onAction="#addSpectator" style="-fx-background-color: #003bff;" text="Add" textFill="WHITE" />
    </children>
 </AnchorPane>

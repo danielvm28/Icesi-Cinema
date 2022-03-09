@@ -1,11 +1,16 @@
 package control;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import model.Film;
 
-public class MiniTheatreController {
+public class MiniTheatreController implements Initializable{
 
     @FXML
     private Button chair46BT;
@@ -99,10 +104,50 @@ public class MiniTheatreController {
 
     @FXML
     private Text filmNameTXT;
+    
+    @FXML
+    private Text spectatorIDTXT;
+    
+    @FXML
+    private Button cancelBTN;
+
+    @FXML
+    private Button addBTN;
+    
+    private String spectatorName;
+    
+    private String spectatorId;
+    
+    private Film film;
+    
+    public MiniTheatreController(String spectatorName, String spectatorId, Film film) {
+    	this.spectatorName = spectatorName;
+    	this.spectatorId = spectatorId;
+    	this.film = film;
+    }
+
+    // TODO Implementar metodos, añadir usuarios pendiente
+    @FXML
+    void addSpectator(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cancel(ActionEvent event) {
+
+    }
 
     @FXML
     void selectChair(ActionEvent event) {
 
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		spectatorNameTXT.setText(spectatorName);
+		spectatorIDTXT.setText(spectatorId);
+		filmNameTXT.setText(film.getName());
+		startTimeFilmTXT.setText(film.getFormattedDate());
+	}
 
 }

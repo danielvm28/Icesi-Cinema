@@ -16,14 +16,14 @@ import model.IcesiCinema;
 
 public class MainMenuController {
 	@FXML
-    private Button addMovieBTN;
+    private Button registerFilmBTN;
 
     @FXML
-    private Button registerUserBTN;
+    private Button registerSpectatorBTN;
 
     @FXML
     private Button reportBTN;
-    
+
     @FXML
     private Button logOutBTN;
 
@@ -56,18 +56,18 @@ public class MainMenuController {
     }
 
     @FXML
-    void registerUser(ActionEvent event) throws IOException {
+    void registerSpectator(ActionEvent event) throws IOException {
     	Alert alert = new Alert(AlertType.INFORMATION);
     	
     	if(IcesiCinema.filmData.isEmpty()) {
     		alert.setTitle("Attention");
     		alert.setHeaderText("No films yet");
-    		alert.setContentText("There are no films yet. Make sure to create at least one before trying to register a user");
+    		alert.setContentText("There are no films yet. Make sure to create at least one before trying to register an spectator");
     		
     		alert.show();
     	} else {
-    		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterUser.fxml"));
-        	loader.setController(new RegisterUserController());
+    		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
+        	loader.setController(new RegisterSpectatorController());
         	Parent parent = (Parent) loader.load();
         	Stage stage = new Stage();
         	Scene scene = new Scene(parent);

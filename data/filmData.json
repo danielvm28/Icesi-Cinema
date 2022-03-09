@@ -1,0 +1,1 @@
+[{"name":"si","date":{"date":{"year":2022,"month":3,"day":8},"time":{"hour":20,"minute":32,"second":28,"nano":462000000}},"durationMinutes":34,"formattedDate":"2022-03-08 20:32","theatre":{"theatreType":"MINI"},"spectators":[{"name":"no","id":"4","chair":{"reserved":false,"chairCode":"A-1"}}]}]
