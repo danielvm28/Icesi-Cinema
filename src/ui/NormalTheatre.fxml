@@ -1,8 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="637.0" style="-fx-background-color: #dbdbdd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <GridPane alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="57.0" layoutY="261.0" prefHeight="120.0" prefWidth="525.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="36.0" minHeight="30.0" prefHeight="36.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="36.0" minHeight="30.0" prefHeight="36.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="36.0" minHeight="30.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="30.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="30.0" prefHeight="36.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="36.0" minHeight="30.0" prefHeight="36.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="chair46BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-6" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+            <Button fx:id="chair45BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-5" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+            <Button fx:id="chair44BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-4" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Button fx:id="chair43BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Button fx:id="chair42BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="chair41BT" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="D-1" GridPane.rowIndex="3" />
+            <Button fx:id="chair36BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-6" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Button fx:id="chair35BT" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="C-5" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button fx:id="chair34BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-4" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Button fx:id="chair33BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="Chair32BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="chair31BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-1" GridPane.rowIndex="2" />
+            <Button fx:id="chair26BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-6" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Button fx:id="chair25BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-5" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <Button fx:id="chair24BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-4" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="chair23BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-3" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="chair22BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="chair21BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-1" GridPane.rowIndex="1" />
+            <Button fx:id="chair16BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-6" GridPane.columnIndex="5" />
+            <Button fx:id="chair15BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-5" GridPane.columnIndex="4" />
+            <Button fx:id="chair14BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-4" GridPane.columnIndex="3" />
+            <Button fx:id="chair13BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-3" GridPane.columnIndex="2" />
+            <Button fx:id="chair12BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-2" GridPane.columnIndex="1" />
+            <Button fx:id="chair11BT" contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-1" />
+            <Button fx:id="chair47BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-7" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+            <Button fx:id="chair27BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-7" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+            <Button fx:id="chair37BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-7" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Button fx:id="chair17BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #b3cbdd;" text="A-7" GridPane.columnIndex="6" />
+            <Button fx:id="chair41BT1" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-1" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT2" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT3" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-3" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT4" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-4" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT5" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-5" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT6" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-6" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT7" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="E-7" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+            <Button fx:id="chair41BT8" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-1" GridPane.rowIndex="5" />
+            <Button fx:id="chair41BT9" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-2" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Button fx:id="chair41BT10" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-3" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Button fx:id="chair41BT11" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-4" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Button fx:id="chair41BT12" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-5" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Button fx:id="chair41BT13" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-6" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+            <Button fx:id="chair41BT14" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="F-7" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="DISAPPEAR" />
+         </cursor>
+      </GridPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#939e9b" height="25.0" layoutX="56.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="525.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9ea1a4" height="58.0" layoutX="-71.0" layoutY="163.0" stroke="BLACK" strokeType="INSIDE" width="85.0" />
+      <Label layoutX="286.0" layoutY="111.0" text="Screen">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#57769c59" height="167.0" layoutX="-7.0" layoutY="-56.0" stroke="#dbdbdd" strokeType="INSIDE" width="652.0" />
+      <Label layoutX="56.0" layoutY="34.0" text="Normal Theatre">
+         <font>
+            <Font name="System Italic" size="24.0" />
+         </font>
+      </Label>
+      <Text fx:id="spectatorNameTXT" layoutX="462.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Carlos Lopez" wrappingWidth="130.99999594688416" />
+      <Text fx:id="startTimeFilmTXT" layoutX="462.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="13:25" wrappingWidth="130.99999594688416" />
+      <Text fx:id="filmNameTXT" layoutX="462.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu mamá en tanga" wrappingWidth="130.99999594688416" />
+      <Label layoutX="373.0" layoutY="21.0" text="Spectator: " />
+      <Label layoutX="373.0" layoutY="51.0" text="Fim name: " />
+      <Label layoutX="373.0" layoutY="77.0" text="Start Hour: " />
+   </children>
 </AnchorPane>
-
