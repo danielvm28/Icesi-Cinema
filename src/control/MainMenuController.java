@@ -7,20 +7,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import main.Main;
+import model.IcesiCinema;
 
 public class MainMenuController {
 	@FXML
-    private Button addMovieBTN;
+    private Button registerFilmBTN;
 
     @FXML
-    private Button registerUserBTN;
+    private Button registerSpectatorBTN;
 
     @FXML
     private Button reportBTN;
-    
+
     @FXML
     private Button logOutBTN;
 
@@ -33,6 +36,9 @@ public class MainMenuController {
     	Scene scene = new Scene(parent);
     	stage.setScene(scene);
     	stage.show();
+    	
+    	Stage s = (Stage) logOutBTN.getScene().getWindow();
+    	s.close();
     }
 
     @FXML
@@ -44,18 +50,33 @@ public class MainMenuController {
     	Scene scene = new Scene(parent);
     	stage.setScene(scene);
     	stage.show();
+    	
+    	Stage s = (Stage) logOutBTN.getScene().getWindow();
+    	s.close();
     }
 
     @FXML
-    void registerUser(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterUser.fxml"));
-    	loader.setController(new RegisterUserController());
-    	Parent parent = (Parent) loader.load();
-    	Stage stage = new Stage();
-    	Scene scene = new Scene(parent);
-    	stage.setScene(scene);
-    	stage.show();
+    void registerSpectator(ActionEvent event) throws IOException {
+    	Alert alert = new Alert(AlertType.INFORMATION);
     	
+    	if(IcesiCinema.filmData.isEmpty()) {
+    		alert.setTitle("Attention");
+    		alert.setHeaderText("No films yet");
+    		alert.setContentText("There are no films yet. Make sure to create at least one before trying to register an spectator");
+    		
+    		alert.show();
+    	} else {
+    		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
+        	loader.setController(new RegisterSpectatorController());
+        	Parent parent = (Parent) loader.load();
+        	Stage stage = new Stage();
+        	Scene scene = new Scene(parent);
+        	stage.setScene(scene);
+        	stage.show();
+        	
+        	Stage s = (Stage) logOutBTN.getScene().getWindow();
+        	s.close();
+    	}
     }
     
     @FXML

@@ -1,24 +1,15 @@
 package model;
 
 public class Chair {
-	//atributes
+	//attributes
 	private boolean reserved;
 	private String chairCode;
-	
-	//relations
-	private User user;
 	
 	//methods
 	public Chair(String chairCode) {
 		this.reserved=false;
 		this.chairCode = chairCode;
 	}
-	
-	public void registerUser(User user) {
-		this.user=user;
-	}
-	
-	
 	
 	public boolean isReserved() {
 		return reserved;

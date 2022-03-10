@@ -1,24 +1,13 @@
 package model;
 
 public class Theatre {
-	//atributes
-	private String theatreCode;
-	
 	//relations
 	private TheatreType theatreType;
+	private Chair[][] chairs;
 	
 	//methods
-	public Theatre(String theatreCode, TheatreType theatreType) {
-		this.theatreCode = theatreCode;
+	public Theatre(TheatreType theatreType) {
 		this.theatreType = theatreType;
-	}
-
-	public String getTheatreCode() {
-		return theatreCode;
-	}
-
-	public void setTheatreCode(String theatreCode) {
-		this.theatreCode = theatreCode;
 	}
 
 	public TheatreType getTheatreType() {
@@ -27,6 +16,23 @@ public class Theatre {
 
 	public void setTheatreType(TheatreType theatreType) {
 		this.theatreType = theatreType;
+	}
+
+	public Chair[][] getChairs() {
+		return chairs;
+	}
+
+	public void setChairs(TheatreType theatreType) {
+		
+	}
+	
+	@Override
+	public String toString() {
+		if(theatreType == TheatreType.MINI) {
+			return "Mini Theatre";
+		} else {
+			return "Normal Theatre";
+		}
 	}
 
 }
