@@ -118,6 +118,7 @@ public class RegisterFilmController implements Initializable{
 				
 				Stage s = (Stage) backBTN.getScene().getWindow();
 		    	s.close();
+		    	backBTN.fire();
 				
 			} catch (NumberFormatException e) {
 				alert.setTitle("Warning");
@@ -134,7 +135,7 @@ public class RegisterFilmController implements Initializable{
 				alert.show();
 			} catch (FilmOverlappingException e) {
 				alert.setTitle("Warning");
-				alert.setHeaderText("Wrong time format");
+				alert.setHeaderText("Film overlapping");
 				alert.setContentText(e.getMessage());
 				
 				alert.show();

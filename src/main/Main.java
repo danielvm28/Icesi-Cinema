@@ -31,7 +31,7 @@ public class Main extends Application{
 		LocalDateTime now = LocalDateTime.now();
 		Theatre the = new Theatre(TheatreType.MINI);
 		
-		IcesiCinema.filmData.add(new Film("si", now, 34, the));
+		IcesiCinema.filmData.add(new Film("si", now, 340, the));
 		
 		Film fi = IcesiCinema.filmData.get(1);
 		Chair c1 = new Chair("A-1");

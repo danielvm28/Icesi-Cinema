@@ -27,11 +27,37 @@ public class IcesiCinema implements Serializable{
 	
 	// Methods
 	public static boolean registerFilm (String name, LocalDate date, int duration, TheatreType theatreType, int startHours, int startMinutes) throws FilmOverlappingException{
-		// TODO Se debe lanzar la excepción FilmOverlappingException si se encuentran conflictos
+		// Ya se hizo Se debe lanzar la excepción FilmOverlappingException si se encuentran conflictos
 		
 		LocalDateTime dateTime = date.atTime(startHours, startMinutes);
-		System.out.println(dateTime);
-		
+		boolean foundError = false;
+		for (int i = 0; i<filmData.size(); i++) {
+			
+			if (filmData.get(i).getTheatre().getTheatreType().equals(theatreType)) {
+				LocalDate dateFilmMovie = filmData.get(i).getDate().toLocalDate();
+				
+				if (dateFilmMovie.equals(date)) {
+					
+					int startMinutesMovieFilmData = (filmData.get(i).getDate().getHour() * 60) + filmData.get(i).getDate().getMinute();
+					int endMinutesMovieFilmData = startMinutesMovieFilmData + filmData.get(i).getDurationMinute();
+					int startNewMovie = (startHours*60)+startMinutes;
+					int endNewMovie = startNewMovie+duration;
+					if (startNewMovie<startMinutesMovieFilmData && endNewMovie>endMinutesMovieFilmData) {
+						foundError=true;
+					}
+					if ((startNewMovie>startMinutesMovieFilmData && startNewMovie<endMinutesMovieFilmData) || (endNewMovie>startMinutesMovieFilmData && endNewMovie<endMinutesMovieFilmData)) {
+						foundError=true;
+					}
+					
+				}
+			}
+		}
+		if (foundError) {
+			throw new FilmOverlappingException();
+		}
+		else {
+			filmData.add(new Film(name, dateTime, duration, new Theatre(theatreType)));
+		}
 		// Save data every time a user registers a film
 		IcesiCinema.saveFilmsJSON();
 		return true;

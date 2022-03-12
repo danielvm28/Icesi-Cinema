@@ -1,13 +1,19 @@
 package control;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import main.Main;
 import model.Film;
 
 public class MiniTheatreController implements Initializable{
@@ -120,6 +126,8 @@ public class MiniTheatreController implements Initializable{
     
     private Film film;
     
+    private String codeChair;
+    
     public MiniTheatreController(String spectatorName, String spectatorId, Film film) {
     	this.spectatorName = spectatorName;
     	this.spectatorId = spectatorId;
@@ -134,12 +142,30 @@ public class MiniTheatreController implements Initializable{
 
     @FXML
     void cancel(ActionEvent event) {
-
+    	
+		try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
+	    	loader.setController(new RegisterSpectatorController());
+	    	Parent parent;
+			parent = (Parent) loader.load();
+			Stage stage = new Stage();
+	    	Scene scene = new Scene(parent);
+	    	stage.setScene(scene);
+	    	stage.show();
+	    	
+	    	Stage s = (Stage) cancelBTN.getScene().getWindow();
+	    	s.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void selectChair(ActionEvent event) {
-
+    	Button pressedButton = (Button) event.getSource();
+    	codeChair = pressedButton.getText();
+    	pressedButton.setStyle("-fx-background-color: #5ed137");
     }
 
 	@Override
@@ -148,6 +174,7 @@ public class MiniTheatreController implements Initializable{
 		spectatorIDTXT.setText(spectatorId);
 		filmNameTXT.setText(film.getName());
 		startTimeFilmTXT.setText(film.getFormattedDate());
+		
 	}
 
 }
