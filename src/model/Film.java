@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Film {
-	public static final int MAX_SPECTATORS = 42;
+	public static final int MAX_NORMAL_SPECTATORS = 42;
+	public static final int MAX_MINI_SPECTATORS = 28;
 	
 	//attribute
 	private String name;
@@ -22,7 +23,9 @@ public class Film {
 		this.date = date;
 		this.durationMinutes = durationMinute;
 		this.theatre = theatre;
-		spectators = new Spectator[MAX_SPECTATORS];
+		
+		int numSpectators = (theatre.getTheatreType() == TheatreType.NORMAL) ? MAX_NORMAL_SPECTATORS : MAX_MINI_SPECTATORS;
+		spectators = new Spectator[numSpectators];
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		
