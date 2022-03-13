@@ -24,15 +24,13 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// Loads the existent films in JSON file every time the program starts
-		try {
-			IcesiCinema.loadFilmsJSON();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
+		IcesiCinema.loadFilmsJSON();
 		
 		
 		
-		// Prueba de adición de películas
+		
+		/** Prueba de adición de películas
 		LocalDateTime now = LocalDateTime.now();
 		Theatre the = new Theatre(TheatreType.MINI);
 		
@@ -47,7 +45,7 @@ public class Main extends Application{
 		
 		fi.setSpectators(sarr);
 		
-		//IcesiCinema.saveFilmsJSON();
+		IcesiCinema.saveFilmsJSON();*/
 		
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/LoginWindow.fxml"));
 		loader.setController(new LoginController());

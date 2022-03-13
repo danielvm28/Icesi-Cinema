@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import exception.DoubledSpectatorException;
@@ -9,20 +10,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.Main;
 import model.Film;
 import model.IcesiCinema;
+import model.Spectator;
 
 public class MiniTheatreController implements Initializable{
 	
 	@FXML
-    private GridPane listButtonsMatris;
+    private GridPane listButtonsMatrix;
 
     @FXML
     private Button chair46BT;
@@ -144,10 +150,32 @@ public class MiniTheatreController implements Initializable{
 
     // TODO Implementar metodos, añadir usuarios pendiente
     @FXML
-    void addSpectator(ActionEvent event) throws DoubledSpectatorException {
+    void addSpectator(ActionEvent event) throws IOException {
+    	
     	if (prevButton!=null) {
-    		IcesiCinema.registerSpectatorToFilm(film, codeChair, spectatorName, spectatorId);
+    		Alert alert = new Alert(AlertType.CONFIRMATION);
+        	alert.setHeaderText("Add User");
+        	alert.setContentText("Are you sure?");
+
+        	Optional<ButtonType> result = alert.showAndWait();
+        	
+        	if (result.get() == ButtonType.OK){
+        		IcesiCinema.registerSpectatorToFilm(film, codeChair, spectatorName, spectatorId);
+        		IcesiCinema.saveFilmsJSON();
+        		Stage s = (Stage) addBTN.getScene().getWindow();
+            	s.close();
+            	
+            	FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/MainMenu.fxml"));
+            	loader.setController(new MainMenuController());
+            	Parent parent = (Parent) loader.load();
+            	Stage stage = new Stage();
+            	Scene scene = new Scene(parent);
+            	stage.setScene(scene);
+            	stage.show();
+        		// Save data every time a user eliminates a film
+        	}
     	}
+    	
     	
     }
 
@@ -189,8 +217,25 @@ public class MiniTheatreController implements Initializable{
 		spectatorIDTXT.setText(spectatorId);
 		filmNameTXT.setText(film.getName());
 		startTimeFilmTXT.setText(film.getFormattedDate());
-		listButtonsMatris=film.gridPaneButtons(listButtonsMatris);
-		
+		Spectator[] spectators = film.getSpectators();
+		for (int i = 0; i<film.getSpectators().length;i++) {
+			
+			if (spectators[i]!=null) {
+				
+				for (Node node: listButtonsMatrix.getChildren()) {
+					Button button;
+					if (node instanceof Button) {
+						button = (Button) node;
+						if (button.getText().equals(spectators[i].getChair().getChairCode())) {
+							button.setStyle("-fx-background-color:  #b3cbdd");
+							button.setDisable(true);;
+						}
+					}
+					//Button button = (node instanceof Button)?(Button) node;
+					
+				}
+			}
+		}
 	}
 
 }

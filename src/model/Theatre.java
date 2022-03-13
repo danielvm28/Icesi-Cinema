@@ -1,15 +1,12 @@
 package model;
 
-import javafx.fxml.FXML;
-import javafx.scene.layout.GridPane;
-
 public class Theatre {
 	//relations
 	private TheatreType theatreType;
 	private Chair[][] chairs;
 	
 	//methods
-	public Theatre(TheatreType theatreTypes) {
+	public Theatre(TheatreType theatreType) {
 		this.theatreType = theatreType;
 	}
 
@@ -33,8 +30,10 @@ public class Theatre {
 	public String toString() {
 		if(theatreType == TheatreType.MINI) {
 			return "Mini Theatre";
-		} else {
+		} else if (theatreType == TheatreType.NORMAL){
 			return "Normal Theatre";
+		} else {
+			return "prueba confirmada";
 		}
 	}
 

@@ -16,7 +16,9 @@ import com.google.gson.Gson;
 
 import exception.DoubledSpectatorException;
 import exception.FilmOverlappingException;
+import exception.FullTheatreException;
 import exception.InvalidIDException;
+import exception.NoFilmsException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -33,22 +35,24 @@ public class IcesiCinema implements Serializable{
 		boolean foundError = false;
 		for (int i = 0; i<filmData.size(); i++) {
 			
-			if (filmData.get(i).getTheatre().getTheatreType().equals(theatreType)) {
-				LocalDate dateFilmMovie = filmData.get(i).getDate().toLocalDate();
-				
-				if (dateFilmMovie.equals(date)) {
+			if (filmData.get(i)!=null) {
+				if (filmData.get(i).getTheatre().getTheatreType().equals(theatreType)) {
+					LocalDate dateFilmMovie = filmData.get(i).getDate().toLocalDate();
 					
-					int startMinutesMovieFilmData = (filmData.get(i).getDate().getHour() * 60) + filmData.get(i).getDate().getMinute();
-					int endMinutesMovieFilmData = startMinutesMovieFilmData + filmData.get(i).getDurationMinute();
-					int startNewMovie = (startHours*60)+startMinutes;
-					int endNewMovie = startNewMovie+duration;
-					if (startNewMovie<startMinutesMovieFilmData && endNewMovie>endMinutesMovieFilmData) {
-						foundError=true;
+					if (dateFilmMovie.equals(date)) {
+						
+						int startMinutesMovieFilmData = (filmData.get(i).getDate().getHour() * 60) + filmData.get(i).getDate().getMinute();
+						int endMinutesMovieFilmData = startMinutesMovieFilmData + filmData.get(i).getDurationMinute();
+						int startNewMovie = (startHours*60)+startMinutes;
+						int endNewMovie = startNewMovie+duration;
+						if (startNewMovie<startMinutesMovieFilmData && endNewMovie>endMinutesMovieFilmData) {
+							foundError=true;
+						}
+						if ((startNewMovie>startMinutesMovieFilmData && startNewMovie<endMinutesMovieFilmData) || (endNewMovie>startMinutesMovieFilmData && endNewMovie<endMinutesMovieFilmData)) {
+							foundError=true;
+						}
+						
 					}
-					if ((startNewMovie>startMinutesMovieFilmData && startNewMovie<endMinutesMovieFilmData) || (endNewMovie>startMinutesMovieFilmData && endNewMovie<endMinutesMovieFilmData)) {
-						foundError=true;
-					}
-					
 				}
 			}
 		}
@@ -63,22 +67,17 @@ public class IcesiCinema implements Serializable{
 		return true;
 	}
 	
-	public static boolean registerSpectatorToFilm(Film film, String chairCode, String spectatorName, String spectatorID) throws DoubledSpectatorException{
+	public static boolean registerSpectatorToFilm(Film film, String chairCode, String spectatorName, String spectatorID){
 		// TODO Se deber lanzar la excepción DoubledSpectatorException si se encuentra un espectador repetido
-		
 		// Save data every time a user registers an spectator
 		for (int i = 0; i< filmData.size();i++) {
-			if (filmData.get(i).getName().equals(film)) {
+
+			if (filmData.get(i).equals(film)) {
 				filmData.get(i).registerSpectator(new Spectator(spectatorName, spectatorID, new Chair(chairCode)));
 			}
 		}
 		IcesiCinema.saveFilmsJSON();
 		return true;
-	}
-	
-	public static Chair searchChair(Film film, String chairCode) {
-		// TODO falta implementar, devuelve un objeto silla para luego asociarla al usuario
-		return null;
 	}
 	
 	public static void saveFilmsJSON() {
@@ -160,4 +159,38 @@ public class IcesiCinema implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	public static void registerSpectatorMainMenu() throws NoFilmsException {
+		// Throws an exception if there are no films to register to
+		if (filmData.isEmpty()) {
+			throw new NoFilmsException();
+		}
+	}
+
+	public static void selectChairForSpectator(String id, Film film) throws DoubledSpectatorException, FullTheatreException {
+		boolean fullTheatre = true;
+		boolean doubledSpectator = false;
+
+		Spectator[] spectators = film.getSpectators();
+
+		// Iterates over the spectators in search of matching IDs and to check if the theatre is full
+		for (int i = 0; i < spectators.length; i++) {
+			
+			if (spectators[i] == null) {
+				fullTheatre = false;
+			} else if (spectators[i].getId().equals(id)) {
+				doubledSpectator = true;
+			}
+		}
+
+		// Throws the corresponding exceptions
+		if (fullTheatre) {
+			throw new FullTheatreException();
+		}
+		
+		if (doubledSpectator) {
+			throw new DoubledSpectatorException();
+		}
+	}
 }
+
+

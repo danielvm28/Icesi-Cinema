@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #dbdbdd;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane fx:id="listButtonsMatris" alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="38.0" layoutY="221.0" prefHeight="120.0" prefWidth="525.0">
+      <GridPane fx:id="listButtonsMatrix" alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="38.0" layoutY="221.0" prefHeight="120.0" prefWidth="525.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -56,7 +56,7 @@
             <Button fx:id="chair47BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-7" GridPane.columnIndex="6" GridPane.rowIndex="3" />
             <Button fx:id="chair27BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-7" GridPane.columnIndex="6" GridPane.rowIndex="1" />
             <Button fx:id="chair37BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-7" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <Button fx:id="chair17BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #b3cbdd;" text="A-7" GridPane.columnIndex="6" />
+            <Button fx:id="chair17BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-7" GridPane.columnIndex="6" />
             <Button fx:id="chair15BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-5" GridPane.columnIndex="4" />
          </children>
          <cursor>

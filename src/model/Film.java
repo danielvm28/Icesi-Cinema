@@ -3,10 +3,6 @@ package model;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.layout.GridPane;
-
 public class Film {
 	public static final int MAX_SPECTATORS = 42;
 	
@@ -15,8 +11,6 @@ public class Film {
 	private LocalDateTime date;
 	private int durationMinutes;
 	private String formattedDate;
-	@FXML
-    private GridPane gridPane;
 
 	//relations
 	private Theatre theatre;
@@ -33,14 +27,6 @@ public class Film {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		
 		formattedDate = date.format(formatter);
-	}
-	
-	public GridPane getGridPane() {
-		return gridPane;
-	}
-
-	public void setGridPane(GridPane gridPane) {
-		this.gridPane = gridPane;
 	}
 
 	public String getName() {
@@ -81,27 +67,13 @@ public class Film {
 	
 	public void registerSpectator(Spectator spectator) {
 		for (int i = 0; i<spectators.length; i++) {
+			
 			if (spectators[i]==null) {
 				spectators[i]=spectator;
 				spectators[i].setReservedChair(spectators[i].getChair());
 				break;
 			}
 		}
-	}
-	
-	public GridPane gridPaneButtons (GridPane inUse) {
-		for (int i = 0; i<spectators.length;i++) {
-			for (Node node: inUse.getChildren()) {
-				if (spectators[i]!=null) {
-					if (node.getAccessibleText().equals(spectators[i].getChair().getChairCode())) {
-						node.setStyle("-fx-background-color:  #b3cbdd");
-						node.disabledProperty();
-					}
-				}
-			}
-		}
-		
-		return inUse;
 	}
 
 	public String getFormattedDate() {
