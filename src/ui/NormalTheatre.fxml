@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="637.0" style="-fx-background-color: #dbdbdd;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="637.0" style="-fx-background-color: #dbdbdd;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="57.0" layoutY="261.0" prefHeight="120.0" prefWidth="525.0">
+      <GridPane fx:id="listButtonsMatrix" alignment="BASELINE_CENTER" gridLinesVisible="true" layoutX="57.0" layoutY="261.0" prefHeight="120.0" prefWidth="525.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -37,9 +37,9 @@
             <Button fx:id="chair44BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-4" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Button fx:id="chair43BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Button fx:id="chair42BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button fx:id="chair41BT" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="D-1" GridPane.rowIndex="3" />
+            <Button fx:id="chair41BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-1" GridPane.rowIndex="3" />
             <Button fx:id="chair36BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-6" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Button fx:id="chair35BT" mnemonicParsing="false" style="-fx-background-color: #46b2dd;" text="C-5" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Button fx:id="chair35BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-5" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <Button fx:id="chair34BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-4" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Button fx:id="chair33BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button fx:id="Chair32BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -59,7 +59,7 @@
             <Button fx:id="chair47BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="D-7" GridPane.columnIndex="6" GridPane.rowIndex="3" />
             <Button fx:id="chair27BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="B-7" GridPane.columnIndex="6" GridPane.rowIndex="1" />
             <Button fx:id="chair37BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="C-7" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-            <Button fx:id="chair17BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #b3cbdd;" text="A-7" GridPane.columnIndex="6" />
+            <Button fx:id="chair17BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="A-7" GridPane.columnIndex="6" />
             <Button fx:id="chair51BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="E-1" GridPane.rowIndex="4" />
             <Button fx:id="chair52BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="E-2" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Button fx:id="chair53BT" mnemonicParsing="false" onAction="#selectChair" style="-fx-background-color: #46b2dd;" text="E-3" GridPane.columnIndex="2" GridPane.rowIndex="4" />

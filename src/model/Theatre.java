@@ -30,8 +30,10 @@ public class Theatre {
 	public String toString() {
 		if(theatreType == TheatreType.MINI) {
 			return "Mini Theatre";
-		} else {
+		} else if (theatreType == TheatreType.NORMAL){
 			return "Normal Theatre";
+		} else {
+			return "prueba confirmada";
 		}
 	}
 

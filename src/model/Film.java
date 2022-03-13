@@ -12,7 +12,7 @@ public class Film {
 	private LocalDateTime date;
 	private int durationMinutes;
 	private String formattedDate;
-	
+
 	//relations
 	private Theatre theatre;
 	private Spectator[] spectators;
@@ -68,8 +68,15 @@ public class Film {
 		this.spectators = spectators;
 	}
 	
-	public void registerSpectator(Spectator spectator, Chair chair) {
-		
+	public void registerSpectator(Spectator spectator) {
+		for (int i = 0; i<spectators.length; i++) {
+			
+			if (spectators[i]==null) {
+				spectators[i]=spectator;
+				spectators[i].setReservedChair(spectators[i].getChair());
+				break;
+			}
+		}
 	}
 
 	public String getFormattedDate() {

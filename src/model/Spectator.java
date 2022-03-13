@@ -38,4 +38,8 @@ public class Spectator {
 	public void setChair(Chair chair) {
 		this.chair = chair;
 	}
+	
+	public void setReservedChair(Chair chair) {
+		chair.setReserved(true);
+	}
 }

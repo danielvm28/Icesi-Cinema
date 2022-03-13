@@ -1,16 +1,30 @@
 package control;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import exception.DoubledSpectatorException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import main.Main;
 import model.Film;
+import model.IcesiCinema;
+import model.Spectator;
 
 public class NormalTheatreController implements Initializable{
+	
+	@FXML
+    private GridPane listButtonsMatrix;
 
 	@FXML
     private Button chair46BT;
@@ -156,12 +170,15 @@ public class NormalTheatreController implements Initializable{
     @FXML
     private Button addBTN;
 
+    private String codeChair;
     
     private String spectatorName;
     
     private String spectatorId;
     
     private Film film;
+    
+    private Button prevButton;
     
     public NormalTheatreController(String spectatorName, String spectatorId, Film film) {
     	this.spectatorName = spectatorName;
@@ -171,18 +188,42 @@ public class NormalTheatreController implements Initializable{
 
     // TODO Implementar metodos, añadir usuarios pendiente
     @FXML
-    void addSpectator(ActionEvent event) {
-
+    void addSpectator(ActionEvent event) throws DoubledSpectatorException {
+    	if (prevButton!=null) {
+    		IcesiCinema.registerSpectatorToFilm(film, codeChair, spectatorName, spectatorId);
+    	}
     }
 
     @FXML
     void cancel(ActionEvent event) {
-
+    	try {
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
+	    	loader.setController(new RegisterSpectatorController());
+	    	Parent parent;
+			parent = (Parent) loader.load();
+			Stage stage = new Stage();
+	    	Scene scene = new Scene(parent);
+	    	stage.setScene(scene);
+	    	stage.show();
+	    	
+	    	Stage s = (Stage) cancelBTN.getScene().getWindow();
+	    	s.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
     void selectChair(ActionEvent event) {
-
+    	if (prevButton!=null) {
+    		prevButton.setStyle("-fx-background-color:  #46b2dd");
+    	}
+    	Button pressedButton = (Button) event.getSource();
+    	codeChair = pressedButton.getText();
+    	pressedButton.setStyle("-fx-background-color: #5ed137");
+    	prevButton=pressedButton;
+    	//color verde lindo #5ed137
     }
 
 	@Override
@@ -191,6 +232,25 @@ public class NormalTheatreController implements Initializable{
 		spectatorIDTXT.setText(spectatorId);
 		filmNameTXT.setText(film.getName());
 		startTimeFilmTXT.setText(film.getFormattedDate());
+		Spectator[] spectators = film.getSpectators();
+		for (int i = 0; i<film.getSpectators().length;i++) {
+			
+			if (spectators[i]!=null) {
+				
+				for (Node node: listButtonsMatrix.getChildren()) {
+					Button button;
+					if (node instanceof Button) {
+						button = (Button) node;
+						if (button.getText().equals(spectators[i].getChair().getChairCode())) {
+							button.setStyle("-fx-background-color:  #b3cbdd");
+							button.setDisable(true);;
+						}
+					}
+					//Button button = (node instanceof Button)?(Button) node;
+					
+				}
+			}
+		}
 	}
 
 }

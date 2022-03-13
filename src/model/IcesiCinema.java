@@ -37,33 +37,58 @@ public class IcesiCinema implements Serializable {
 	public static ArrayList<String> loginUserData = new ArrayList<>();
 
 	// Methods
-	public static boolean registerFilm(String name, LocalDate date, int duration, TheatreType theatreType,
-			int startHours, int startMinutes) throws FilmOverlappingException {
-		// TODO Se debe lanzar la excepción FilmOverlappingException si se encuentran
-		// conflictos
-
+	public static boolean registerFilm (String name, LocalDate date, int duration, TheatreType theatreType, int startHours, int startMinutes) throws FilmOverlappingException{
+		// Ya se hizo Se debe lanzar la excepciï¿½n FilmOverlappingException si se encuentran conflictos
+		
 		LocalDateTime dateTime = date.atTime(startHours, startMinutes);
-		System.out.println(dateTime);
-
+		boolean foundError = false;
+		for (int i = 0; i<filmData.size(); i++) {
+			
+			if (filmData.get(i)!=null) {
+				if (filmData.get(i).getTheatre().getTheatreType().equals(theatreType)) {
+					LocalDate dateFilmMovie = filmData.get(i).getDate().toLocalDate();
+					
+					if (dateFilmMovie.equals(date)) {
+						
+						int startMinutesMovieFilmData = (filmData.get(i).getDate().getHour() * 60) + filmData.get(i).getDate().getMinute();
+						int endMinutesMovieFilmData = startMinutesMovieFilmData + filmData.get(i).getDurationMinute();
+						int startNewMovie = (startHours*60)+startMinutes;
+						int endNewMovie = startNewMovie+duration;
+						if (startNewMovie<startMinutesMovieFilmData && endNewMovie>endMinutesMovieFilmData) {
+							foundError=true;
+						}
+						if ((startNewMovie>startMinutesMovieFilmData && startNewMovie<endMinutesMovieFilmData) || (endNewMovie>startMinutesMovieFilmData && endNewMovie<endMinutesMovieFilmData)) {
+							foundError=true;
+						}
+						
+					}
+				}
+			}
+		}
+		if (foundError) {
+			throw new FilmOverlappingException();
+		}
+		else {
+			filmData.add(new Film(name, dateTime, duration, new Theatre(theatreType)));
+		}
 		// Save data every time a user registers a film
 		IcesiCinema.saveFilmsJSON();
 		return true;
 	}
-
-	public static boolean registerSpectatorToFilm(Film film, String chairCode, String spectatorName,
-			String spectatorID) {
-
+	
+	public static boolean registerSpectatorToFilm(Film film, String chairCode, String spectatorName, String spectatorID){
+		// TODO Se deber lanzar la excepciï¿½n DoubledSpectatorException si se encuentra un espectador repetido
 		// Save data every time a user registers an spectator
+		for (int i = 0; i< filmData.size();i++) {
+
+			if (filmData.get(i).equals(film)) {
+				filmData.get(i).registerSpectator(new Spectator(spectatorName, spectatorID, new Chair(chairCode)));
+			}
+		}
 		IcesiCinema.saveFilmsJSON();
 		return true;
 	}
-
-	public static Chair searchChair(Film film, String chairCode) {
-		// TODO falta implementar, devuelve un objeto silla para luego asociarla al
-		// usuario
-		return null;
-	}
-
+	
 	public static void saveFilmsJSON() {
 		// Saves the films in a JSON file
 
@@ -144,7 +169,6 @@ public class IcesiCinema implements Serializable {
 			e.printStackTrace();
 		}
 	}
-
 	public static void registerSpectatorMainMenu() throws NoFilmsException {
 		// Throws an exception if there are no films to register to
 		if (filmData.isEmpty()) {
@@ -178,3 +202,5 @@ public class IcesiCinema implements Serializable {
 		}
 	}
 }
+
+

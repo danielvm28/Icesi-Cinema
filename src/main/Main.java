@@ -27,11 +27,14 @@ public class Main extends Application{
 		
 		//IcesiCinema.loadFilmsJSON();
 		
-		// Prueba de adición de películas
+		
+		
+		
+		/** Prueba de adiciï¿½n de pelï¿½culas
 		LocalDateTime now = LocalDateTime.now();
 		Theatre the = new Theatre(TheatreType.MINI);
 		
-		IcesiCinema.filmData.add(new Film("si", now, 34, the));
+		IcesiCinema.filmData.add(new Film("si", now, 340, the));
 		
 		Film fi = IcesiCinema.filmData.get(0);
 		Chair c1 = new Chair("A-1");
@@ -42,7 +45,7 @@ public class Main extends Application{
 		
 		fi.setSpectators(sarr);
 		
-		IcesiCinema.saveFilmsJSON();
+		IcesiCinema.saveFilmsJSON();*/
 		
 		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/LoginWindow.fxml"));
 		loader.setController(new LoginController());
