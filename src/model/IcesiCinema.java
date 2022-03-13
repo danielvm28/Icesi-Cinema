@@ -145,7 +145,7 @@ public class IcesiCinema implements Serializable {
 		}
 	}
 
-	public static void registerUserMainMenu() throws NoFilmsException {
+	public static void registerSpectatorMainMenu() throws NoFilmsException {
 		// Throws an exception if there are no films to register to
 		if (filmData.isEmpty()) {
 			throw new NoFilmsException();
@@ -160,6 +160,7 @@ public class IcesiCinema implements Serializable {
 
 		// Iterates over the spectators in search of matching IDs and to check if the theatre is full
 		for (int i = 0; i < spectators.length; i++) {
+			
 			if (spectators[i] == null) {
 				fullTheatre = false;
 			} else if (spectators[i].getId().equals(id)) {

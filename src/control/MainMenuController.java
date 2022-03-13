@@ -60,7 +60,7 @@ public class MainMenuController {
     void registerSpectator(ActionEvent event) throws IOException {
     	
     	try {
-			IcesiCinema.registerUserMainMenu();
+			IcesiCinema.registerSpectatorMainMenu();
 			
 			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
         	loader.setController(new RegisterSpectatorController());

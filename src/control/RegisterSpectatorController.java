@@ -142,7 +142,7 @@ public class RegisterSpectatorController implements Initializable {
 			} catch (DoubledSpectatorException e) {
 				Alert alert2 = new Alert(AlertType.WARNING);
 				alert2.setTitle("Warning");
-				alert2.setHeaderText("The theatre is full");
+				alert2.setHeaderText("This ID is already registered");
 				alert2.setContentText(e.getMessage());
 
 				alert2.show();

@@ -36,7 +36,7 @@ public class Main extends Application{
 		Film fi = IcesiCinema.filmData.get(0);
 		Chair c1 = new Chair("A-1");
 		Spectator s1 = new Spectator("no", "4", c1);
-		Spectator[] sarr = new Spectator[1];
+		Spectator[] sarr = new Spectator[32];
 		
 		sarr[0] = s1;
 		
