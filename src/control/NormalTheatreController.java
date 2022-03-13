@@ -1,10 +1,10 @@
 package control;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import exception.DoubledSpectatorException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +16,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.Main;
 import model.Film;
+import model.IcesiCinema;
 
 public class NormalTheatreController implements Initializable{
 
@@ -181,8 +182,10 @@ public class NormalTheatreController implements Initializable{
 
     // TODO Implementar metodos, añadir usuarios pendiente
     @FXML
-    void addSpectator(ActionEvent event) {
-    	
+    void addSpectator(ActionEvent event) throws DoubledSpectatorException {
+    	if (prevButton!=null) {
+    		IcesiCinema.registerSpectatorToFilm(film, codeChair, spectatorName, spectatorId);
+    	}
     }
 
     @FXML
@@ -224,6 +227,8 @@ public class NormalTheatreController implements Initializable{
 		spectatorIDTXT.setText(spectatorId);
 		filmNameTXT.setText(film.getName());
 		startTimeFilmTXT.setText(film.getFormattedDate());
+		
+		//es posible de borrar
 	}
 
 }

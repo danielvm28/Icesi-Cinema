@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import exception.DoubledSpectatorException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +12,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.Main;
 import model.Film;
+import model.IcesiCinema;
 
 public class MiniTheatreController implements Initializable{
+	
+	@FXML
+    private GridPane listButtonsMatris;
 
     @FXML
     private Button chair46BT;
@@ -128,6 +134,8 @@ public class MiniTheatreController implements Initializable{
     
     private String codeChair;
     
+    private Button prevButton;
+    
     public MiniTheatreController(String spectatorName, String spectatorId, Film film) {
     	this.spectatorName = spectatorName;
     	this.spectatorId = spectatorId;
@@ -136,8 +144,11 @@ public class MiniTheatreController implements Initializable{
 
     // TODO Implementar metodos, añadir usuarios pendiente
     @FXML
-    void addSpectator(ActionEvent event) {
-
+    void addSpectator(ActionEvent event) throws DoubledSpectatorException {
+    	if (prevButton!=null) {
+    		IcesiCinema.registerSpectatorToFilm(film, codeChair, spectatorName, spectatorId);
+    	}
+    	
     }
 
     @FXML
@@ -163,9 +174,13 @@ public class MiniTheatreController implements Initializable{
 
     @FXML
     void selectChair(ActionEvent event) {
+    	if (prevButton!=null) {
+    		prevButton.setStyle("-fx-background-color:  #46b2dd");
+    	}
     	Button pressedButton = (Button) event.getSource();
     	codeChair = pressedButton.getText();
     	pressedButton.setStyle("-fx-background-color: #5ed137");
+    	prevButton=pressedButton;
     }
 
 	@Override
@@ -174,6 +189,7 @@ public class MiniTheatreController implements Initializable{
 		spectatorIDTXT.setText(spectatorId);
 		filmNameTXT.setText(film.getName());
 		startTimeFilmTXT.setText(film.getFormattedDate());
+		listButtonsMatris=film.gridPaneButtons(listButtonsMatris);
 		
 	}
 

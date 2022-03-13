@@ -24,8 +24,13 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// Loads the existent films in JSON file every time the program starts
+		try {
+			IcesiCinema.loadFilmsJSON();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
-		IcesiCinema.loadFilmsJSON();
+		
 		
 		// Prueba de adición de películas
 		LocalDateTime now = LocalDateTime.now();
@@ -33,7 +38,7 @@ public class Main extends Application{
 		
 		IcesiCinema.filmData.add(new Film("si", now, 340, the));
 		
-		Film fi = IcesiCinema.filmData.get(1);
+		Film fi = IcesiCinema.filmData.get(0);
 		Chair c1 = new Chair("A-1");
 		Spectator s1 = new Spectator("no", "4", c1);
 		Spectator[] sarr = new Spectator[1];

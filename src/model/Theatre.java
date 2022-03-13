@@ -1,12 +1,15 @@
 package model;
 
+import javafx.fxml.FXML;
+import javafx.scene.layout.GridPane;
+
 public class Theatre {
 	//relations
 	private TheatreType theatreType;
 	private Chair[][] chairs;
 	
 	//methods
-	public Theatre(TheatreType theatreType) {
+	public Theatre(TheatreType theatreTypes) {
 		this.theatreType = theatreType;
 	}
 

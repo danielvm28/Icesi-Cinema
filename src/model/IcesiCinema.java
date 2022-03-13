@@ -67,6 +67,11 @@ public class IcesiCinema implements Serializable{
 		// TODO Se deber lanzar la excepción DoubledSpectatorException si se encuentra un espectador repetido
 		
 		// Save data every time a user registers an spectator
+		for (int i = 0; i< filmData.size();i++) {
+			if (filmData.get(i).getName().equals(film)) {
+				filmData.get(i).registerSpectator(new Spectator(spectatorName, spectatorID, new Chair(chairCode)));
+			}
+		}
 		IcesiCinema.saveFilmsJSON();
 		return true;
 	}
