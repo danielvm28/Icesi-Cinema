@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 
+import exception.NoFilmsException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,16 +58,11 @@ public class MainMenuController {
 
     @FXML
     void registerSpectator(ActionEvent event) throws IOException {
-    	Alert alert = new Alert(AlertType.INFORMATION);
     	
-    	if(IcesiCinema.filmData.isEmpty()) {
-    		alert.setTitle("Attention");
-    		alert.setHeaderText("No films yet");
-    		alert.setContentText("There are no films yet. Make sure to create at least one before trying to register an spectator");
-    		
-    		alert.show();
-    	} else {
-    		FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
+    	try {
+			IcesiCinema.registerSpectatorMainMenu();
+			
+			FXMLLoader loader = new FXMLLoader(Main.class.getResource("../ui/RegisterSpectator.fxml"));
         	loader.setController(new RegisterSpectatorController());
         	Parent parent = (Parent) loader.load();
         	Stage stage = new Stage();
@@ -76,7 +72,15 @@ public class MainMenuController {
         	
         	Stage s = (Stage) logOutBTN.getScene().getWindow();
         	s.close();
-    	}
+        	
+		} catch (NoFilmsException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("Attention");
+    		alert.setHeaderText("No films yet");
+    		alert.setContentText(e.getMessage());
+    		
+    		alert.show();
+		}
     }
     
     @FXML

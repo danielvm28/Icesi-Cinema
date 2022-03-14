@@ -25,12 +25,12 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// Loads the existent films in JSON file every time the program starts
 		
-		IcesiCinema.loadFilmsJSON();
+		//IcesiCinema.loadFilmsJSON();
 		
 		
 		
 		
-		/** Prueba de adición de películas
+		/** Prueba de adiciï¿½n de pelï¿½culas
 		LocalDateTime now = LocalDateTime.now();
 		Theatre the = new Theatre(TheatreType.MINI);
 		
@@ -39,7 +39,7 @@ public class Main extends Application{
 		Film fi = IcesiCinema.filmData.get(0);
 		Chair c1 = new Chair("A-1");
 		Spectator s1 = new Spectator("no", "4", c1);
-		Spectator[] sarr = new Spectator[1];
+		Spectator[] sarr = new Spectator[32];
 		
 		sarr[0] = s1;
 		
