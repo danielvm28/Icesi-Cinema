@@ -21,6 +21,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.Main;
+import model.Chair;
 import model.Film;
 import model.IcesiCinema;
 import model.Spectator;
@@ -160,7 +161,9 @@ public class MiniTheatreController implements Initializable{
         	Optional<ButtonType> result = alert.showAndWait();
         	
         	if (result.get() == ButtonType.OK){
-        		IcesiCinema.registerSpectatorToFilm(film, codeChair, spectatorName, spectatorId);
+        		Chair chair = new Chair(codeChair);
+        		
+        		IcesiCinema.registerSpectatorToFilm(film, chair, spectatorName, spectatorId);
         		IcesiCinema.saveFilmsJSON();
         		Stage s = (Stage) addBTN.getScene().getWindow();
             	s.close();
@@ -172,7 +175,6 @@ public class MiniTheatreController implements Initializable{
             	Scene scene = new Scene(parent);
             	stage.setScene(scene);
             	stage.show();
-        		// Save data every time a user eliminates a film
         	}
     	}
     	

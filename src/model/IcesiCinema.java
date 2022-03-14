@@ -57,7 +57,7 @@ public class IcesiCinema implements Serializable {
 						if (startNewMovie<startMinutesMovieFilmData && endNewMovie>endMinutesMovieFilmData) {
 							foundError=true;
 						}
-						if ((startNewMovie>startMinutesMovieFilmData && startNewMovie<endMinutesMovieFilmData) || (endNewMovie>startMinutesMovieFilmData && endNewMovie<endMinutesMovieFilmData)) {
+						if ((startNewMovie >= startMinutesMovieFilmData && startNewMovie<endMinutesMovieFilmData) || (endNewMovie > startMinutesMovieFilmData && endNewMovie<endMinutesMovieFilmData)) {
 							foundError=true;
 						}
 						
@@ -76,13 +76,13 @@ public class IcesiCinema implements Serializable {
 		return true;
 	}
 	
-	public static boolean registerSpectatorToFilm(Film film, String chairCode, String spectatorName, String spectatorID){
+	public static boolean registerSpectatorToFilm(Film film, Chair chair, String spectatorName, String spectatorID){
 		// TODO Se deber lanzar la excepci�n DoubledSpectatorException si se encuentra un espectador repetido
 		// Save data every time a user registers an spectator
 		for (int i = 0; i< filmData.size();i++) {
 
 			if (filmData.get(i).equals(film)) {
-				filmData.get(i).registerSpectator(new Spectator(spectatorName, spectatorID, new Chair(chairCode)));
+				filmData.get(i).registerSpectator(new Spectator(spectatorName, spectatorID, chair));
 			}
 		}
 		IcesiCinema.saveFilmsJSON();

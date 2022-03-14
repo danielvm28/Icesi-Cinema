@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.junit.jupiter.api.Test;
 
 import com.google.gson.Gson;
@@ -27,10 +29,18 @@ class MoviesTest {
 		filmData.clear();
 	}
 	
+	public void setupStage2() {
+		filmData = IcesiCinema.filmData;
+		filmData.clear();
+		filmData.add(new Film("La niebla", LocalDateTime.of(2022, 2, 2, 12, 30), 120, new Theatre(TheatreType.MINI)));
+	}
+	
 	
 	// Tests
 	@Test
 	void addFilmTest() {
+		setupStage1();
+		
 		String name = "Rapidos y furiosos";
 		LocalDate date = LocalDate.of(2022, 02, 02);
 		int duration = 120;
@@ -42,8 +52,7 @@ class MoviesTest {
 			IcesiCinema.registerFilm(name, date, duration, theatreType, startHours, startMinutes);
 		});
 		
-		assertEquals(1, IcesiCinema.filmData.size());
-		
+		assertEquals(1, filmData.size());
 		
 		try {
 			FileInputStream fis;
@@ -66,14 +75,32 @@ class MoviesTest {
 				gotFilmData.add(f);
 			}
 			
-			assertTrue(gotFilmData.equals(filmData));
+			Film film1 = gotFilmData.get(0);
+			Film film2 = filmData.get(0);
+			
+			assertEquals(film1.getName(), film2.getName());
+			assertEquals(film1.getDate(), film2.getDate());
+			assertEquals(film1.getDurationMinute(), film2.getDurationMinute());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
-
+	
+	@Test
+	void filmOverlappingTest() {
+		setupStage2();
+		
+		String name = "Rapidos y furiosos";
+		LocalDate date = LocalDate.of(2022, 02, 02);
+		int duration = 120;
+		TheatreType theatreType = TheatreType.MINI;
+		int startHours = 12;
+		int startMinutes = 30;
+		
+		assertThrows(FilmOverlappingException.class, () -> {
+			IcesiCinema.registerFilm(name, date, duration, theatreType, startHours, startMinutes);
+		});
+	}
 }
