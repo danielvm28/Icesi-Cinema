@@ -11,11 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import com.google.gson.Gson;
-
-import control.MiniTheatreController;
-import control.NormalTheatreController;
 import exception.DoubledSpectatorException;
 import exception.FilmOverlappingException;
 import exception.FullTheatreException;
@@ -23,13 +19,6 @@ import exception.InvalidIDException;
 import exception.NoFilmsException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
-import main.Main;
 
 public class IcesiCinema implements Serializable {
 	// Attributes
@@ -37,9 +26,7 @@ public class IcesiCinema implements Serializable {
 	public static ArrayList<String> loginUserData = new ArrayList<>();
 
 	// Methods
-	public static boolean registerFilm (String name, LocalDate date, int duration, TheatreType theatreType, int startHours, int startMinutes) throws FilmOverlappingException{
-		// Ya se hizo Se debe lanzar la excepci�n FilmOverlappingException si se encuentran conflictos
-		
+	public static void registerFilm (String name, LocalDate date, int duration, TheatreType theatreType, int startHours, int startMinutes) throws FilmOverlappingException{
 		LocalDateTime dateTime = date.atTime(startHours, startMinutes);
 		boolean foundError = false;
 		for (int i = 0; i<filmData.size(); i++) {
@@ -73,20 +60,18 @@ public class IcesiCinema implements Serializable {
 		}
 		// Save data every time a user registers a film
 		IcesiCinema.saveFilmsJSON();
-		return true;
 	}
 	
-	public static boolean registerSpectatorToFilm(Film film, Chair chair, String spectatorName, String spectatorID){
-		// TODO Se deber lanzar la excepci�n DoubledSpectatorException si se encuentra un espectador repetido
-		// Save data every time a user registers an spectator
+	public static void registerSpectatorToFilm(Film film, Chair chair, String spectatorName, String spectatorID){
 		for (int i = 0; i< filmData.size();i++) {
 
 			if (filmData.get(i).equals(film)) {
 				filmData.get(i).registerSpectator(new Spectator(spectatorName, spectatorID, chair));
 			}
 		}
+		
+		// Save data every time a user registers an spectator
 		IcesiCinema.saveFilmsJSON();
-		return true;
 	}
 	
 	public static void saveFilmsJSON() {

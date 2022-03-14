@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import exception.DoubledSpectatorException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -149,7 +147,6 @@ public class MiniTheatreController implements Initializable{
     	this.film = film;
     }
 
-    // TODO Implementar metodos, añadir usuarios pendiente
     @FXML
     void addSpectator(ActionEvent event) throws IOException {
     	
@@ -164,7 +161,6 @@ public class MiniTheatreController implements Initializable{
         		Chair chair = new Chair(codeChair);
         		
         		IcesiCinema.registerSpectatorToFilm(film, chair, spectatorName, spectatorId);
-        		IcesiCinema.saveFilmsJSON();
         		Stage s = (Stage) addBTN.getScene().getWindow();
             	s.close();
             	
@@ -197,7 +193,6 @@ public class MiniTheatreController implements Initializable{
 	    	Stage s = (Stage) cancelBTN.getScene().getWindow();
 	    	s.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -233,8 +228,6 @@ public class MiniTheatreController implements Initializable{
 							button.setDisable(true);;
 						}
 					}
-					//Button button = (node instanceof Button)?(Button) node;
-					
 				}
 			}
 		}

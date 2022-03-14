@@ -45,13 +45,13 @@ public class RegisterSpectatorController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// Initializes the combo-box with the film names
 
-		ArrayList<String> filmNames = new ArrayList<>();
+		ArrayList<String> filmNamesAndTime = new ArrayList<>();
 
 		for (Film f : IcesiCinema.filmData) {
-			filmNames.add(f.getName());
+			filmNamesAndTime.add(f.getName() + " -- " + f.getFormattedDate());
 		}
 
-		comboBoxSelectFilm.getItems().setAll(filmNames);
+		comboBoxSelectFilm.getItems().setAll(filmNamesAndTime);
 
 	}
 
@@ -97,12 +97,15 @@ public class RegisterSpectatorController implements Initializable {
 			// If the fields are fine, find the selected film and launch the corresponding
 			// window
 			// TODO Puede haber error al introducir peliculas con el mismo nombre, revisar
-			String selectedTitle = comboBoxSelectFilm.getValue();
+			String[] filmInfo = comboBoxSelectFilm.getValue().split("--");
+			String selectedTitle = filmInfo[0].trim();
+			String selectedDate = filmInfo[1].trim();
+			
 			Film foundFilm = null;
 			Theatre foundTheatre = null;
 
 			for (Film film : IcesiCinema.filmData) {
-				if (film.getName().equals(selectedTitle)) {
+				if (film.getName().equals(selectedTitle) && film.getFormattedDate().equals(selectedDate)) {
 					foundFilm = film;
 					foundTheatre = film.getTheatre();
 					break;
@@ -112,7 +115,7 @@ public class RegisterSpectatorController implements Initializable {
 			try {
 				IcesiCinema.selectChairForSpectator(textLabelID.getText().trim(), foundFilm);
 				
-				// TODO In the constructors of the controllers, pass the obtained information of
+				// In the constructors of the controllers, pass the obtained information of
 				// the spectator.
 				// This will allow to register the spectator from there
 

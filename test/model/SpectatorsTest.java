@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 import exception.DoubledSpectatorException;
+import exception.FullTheatreException;
 import exception.NoFilmsException;
 import javafx.collections.ObservableList;
 
@@ -38,7 +39,10 @@ class SpectatorsTest {
 		filmData = IcesiCinema.filmData;
 		filmData.clear();
 		filmData.add(new Film("Jackie Chan", LocalDateTime.of(2022, 3, 3, 7, 30) , 150, new Theatre(TheatreType.NORMAL)));
-		IcesiCinema.registerSpectatorToFilm(filmData.get(0), new Chair("D-2"), "Luis", "18376284");
+		
+		for(int i = 0; i < 42; i++) {
+			IcesiCinema.registerSpectatorToFilm(filmData.get(0), new Chair("D-2"), "Luis", String.valueOf(i));
+		}
 	}
 	
 	@Test
@@ -90,7 +94,11 @@ class SpectatorsTest {
 	
 	@Test
 	void fillTheatreTest() {
+		setupStage4();
 		
+		assertThrows(FullTheatreException.class, () -> {
+			IcesiCinema.selectChairForSpectator("18376284", filmData.get(0));
+		});
 	}
 
 }
