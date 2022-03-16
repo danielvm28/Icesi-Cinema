@@ -117,7 +117,7 @@ public class RegisterFilmController implements Initializable{
     				Alert alert2 = new Alert (AlertType.WARNING);
     				alert2.setTitle("Warning");
     	    		alert2.setHeaderText("Invalid Start Time");
-    	    		alert2.setContentText("Remember that the hours of operation are from 5am to 10:59pm.");
+    	    		alert2.setContentText("Remember that the hours of operation are from 6:00 to 22:59");
     	    		
     	    		alert2.show();
     			} else {
